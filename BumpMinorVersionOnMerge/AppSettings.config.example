@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<appSettings>
+  <add key="webpages:Version" value="3.0.0.0" />
+  <add key="webpages:Enabled" value="false" />
+  <add key="ClientValidationEnabled" value="true" />
+  <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+
+  <!-- 
+  Git.UserName
+    The name as which we will commit the bumped version
+  -->
+  <add key="Git.UserName" value="Mark Automatrix" />
+  <!--
+  Git.EmailAddress
+    The emailadress as which we will commit the bumped version
+  -->
+  <add key="Git.EmailAddress" value="mark@q42.nl" />
+
+  <!--
+  Github.PersonalAccessToken
+    ApiToken of a user which has commit rights on the repository to which you want to bump the version
+    Create one for yourself @ https://github.com/settings/applications (Personal Access Tokens
+    Give it the right to 'repo' (checkout/commit) for public and private repos (as required)
+  -->
+  <add key="Github.PersonalAccessToken" value="TODO_FETCH_FROM_GITHUB"/>
+</appSettings>
