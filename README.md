@@ -1,6 +1,8 @@
-# autoversionbumper
+# Auto version Bumper
 
 This web-api is used to recieve a webhook push event from github. If the event is a push of commits to the `refs/head/develop` branch AND it contains commits merging a feature branch into it or a pull request being merged it will try to bump the minor version of the repository and push it back.
+
+![Example](https://raw.githubusercontent.com/crunchie84/autoversionbumper/develop/docs/screenshot.png)
 
 # Setup
 
