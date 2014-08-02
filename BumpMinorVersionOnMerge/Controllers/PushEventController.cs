@@ -66,7 +66,7 @@ namespace BumpMinorVersionOnMerge.Controllers
             repo.Reset(ResetMode.Hard);
 
             //update to newest code from origin
-            repo.Fetch("origin");
+            repo.Fetch("origin", new FetchOptions { Credentials = gitCredentials });
 
             // switch to develop branch (to be sure)
             if (repo.Branches.All(b => b.Name != "develop"))
@@ -108,8 +108,8 @@ namespace BumpMinorVersionOnMerge.Controllers
     {
       //open the version file
       var version = File.ReadAllText(versionFilePath);
-      var major = version.Split(new[] {'.'}, StringSplitOptions.RemoveEmptyEntries).First();
-      var minor = int.Parse(version.Split(new[] {'.'}, StringSplitOptions.RemoveEmptyEntries).Last());
+      var major = version.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries).First();
+      var minor = int.Parse(version.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries).Last());
 
       version = string.Format("{0}.{1}", major, minor + 1);
 
@@ -128,7 +128,7 @@ namespace BumpMinorVersionOnMerge.Controllers
       var repositoryCheckoutDir = Path.Combine(baseDir, pushEvent.Repository.Name.Replace(@"\", "").Replace(@"/", "").Replace("~", "").Replace("..", "")); //small cleanups to prevent escaping of current dir
       if (!Directory.Exists(repositoryCheckoutDir))
       {
-        Repository.Clone(pushEvent.Repository.Url, repositoryCheckoutDir, new CloneOptions {Credentials = gitCredentials});
+        Repository.Clone(pushEvent.Repository.Url, repositoryCheckoutDir, new CloneOptions { Credentials = gitCredentials });
       }
       return repositoryCheckoutDir;
     }
